@@ -15,4 +15,4 @@ MonoBehaviour:
   ItemName: Chair
   ItemImage: {fileID: 21300000, guid: 67b196c6d3f1cff489eda1c9fc1caa82, type: 3}
   ItemDescription: ModerChair
-  Item3DModel: {fileID: 0}
+  Item3DModel: {fileID: 2396654848086397421, guid: 2755824351d807949b43058cda288ab3, type: 3}

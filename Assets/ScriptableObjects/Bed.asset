@@ -15,4 +15,4 @@ MonoBehaviour:
   ItemName: Bed
   ItemImage: {fileID: 21300000, guid: f463491247e4a5c46aefc5834d372522, type: 3}
   ItemDescription: ModerBed
-  Item3DModel: {fileID: 3288276463922899547, guid: f7f19bab72e21194aab8f92a946412b0, type: 3}
+  Item3DModel: {fileID: 4163829296077111086, guid: f7f19bab72e21194aab8f92a946412b0, type: 3}

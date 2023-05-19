@@ -15,4 +15,4 @@ MonoBehaviour:
   ItemName: Table
   ItemImage: {fileID: 21300000, guid: 356c625e0bb162340910d04de6a1da7f, type: 3}
   ItemDescription: ModerTable
-  Item3DModel: {fileID: 0}
+  Item3DModel: {fileID: 2533645948907195611, guid: d35c9325d587e09458ebfe048ce8456c, type: 3}
