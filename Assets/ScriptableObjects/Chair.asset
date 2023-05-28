@@ -16,3 +16,8 @@ MonoBehaviour:
   ItemImage: {fileID: 21300000, guid: 67b196c6d3f1cff489eda1c9fc1caa82, type: 3}
   ItemDescription: ModerChair
   Item3DModel: {fileID: 2396654848086397421, guid: 2755824351d807949b43058cda288ab3, type: 3}
+  Parts:
+  - {fileID: 6498468064301951550, guid: 4ce3855359bc1764d9753480551c7a39, type: 3}
+  - {fileID: 5720063075383304166, guid: 1ed58ece55ba1bb4b8f4b136aff56d78, type: 3}
+  - {fileID: 8865748404221076766, guid: b35c144f4a657514792d92f0a16825ca, type: 3}
+  - {fileID: 1351991427202138278, guid: c4a3717f5262afd4ebe9e8e4720cc5fe, type: 3}

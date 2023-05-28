@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Item
+  - Undefined
+  - inferiorComplejo
+  - inferiorSimple
+  - superiorComplejo
+  - superiorSimple
   layers:
   - Default
   - TransparentFX

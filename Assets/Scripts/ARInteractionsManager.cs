@@ -17,10 +17,17 @@ public class ARInteractionsManager : MonoBehaviour
     private GameObject aRPointer;
     private GameObject item3DModel;
     private GameObject itemSelected;
+    private GameObject partSelected;
+
+    /*private GameObject inferiorComplejo;
+    private GameObject inferiorSimple;
+    private GameObject superiorComplejo;
+    private GameObject superiorSimple;*/
 
     private bool isInitialPosition;
     private bool isOverUI;
     private bool isOver3DModel;
+    private bool isOver3DPart;
 
     private float rotationTolerance = 1.5f;
     private float scaleTolerance = 25f;
@@ -69,7 +76,46 @@ public class ARInteractionsManager : MonoBehaviour
                 var touchPosition = touchOne.position;
                 isOverUI = isTapOverUI(touchPosition);
                 isOver3DModel = isTapOver3DModel(touchPosition);
+                isOver3DPart = isTapOver3DPart(touchPosition);                
             }
+
+            /*if (touchOne.phase == TouchPhase.Stationary)
+            {
+                if(isOver3DPart)
+                {
+                    string tag = partSelected.tag;
+                    Debug.Log("Estoy dentro");
+                    
+                    inferiorComplejo = GameObject.FindGameObjectWithTag("inferiorComplejo");
+                    inferiorSimple = GameObject.FindGameObjectWithTag("inferiorSimple");
+                    superiorComplejo = GameObject.FindGameObjectWithTag("superiorComplejo");
+                    superiorSimple = GameObject.FindGameObjectWithTag("superiorSimple");
+                    
+                    if (tag == "inferiorComplejo")
+                    {
+                        partSelected.SetActive(false);
+                        inferiorSimple.SetActive(true);
+                    }
+                    else if (tag == "inferiorSimple")
+                    {
+                        partSelected.SetActive(false);
+                        inferiorComplejo.SetActive(true);
+                    }
+                    else if (tag == "superiorComplejo")
+                    {
+                        Debug.Log("estoy en superior");
+
+                        superiorComplejo.SetActive(false);
+                        superiorSimple.SetActive(true);
+                    }
+                    else if (tag == "superiorSimple")
+                    {
+                        partSelected.SetActive(false);
+                        superiorComplejo.SetActive(true);
+                    }
+                    
+                }
+            }*/
 
             if (touchOne.phase == TouchPhase.Moved)
             {
@@ -126,6 +172,9 @@ public class ARInteractionsManager : MonoBehaviour
                 transform.position = item3DModel.transform.position;
                 item3DModel.transform.parent = aRPointer.transform;
             }
+
+            
+
         }
     }
 
@@ -145,6 +194,20 @@ public class ARInteractionsManager : MonoBehaviour
             if(hit3DModel.collider.CompareTag("Item"))
             {
                 itemSelected = hit3DModel.transform.gameObject;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool isTapOver3DPart(Vector2 touchPosition){
+        Ray ray = aRCamera.ScreenPointToRay(touchPosition);
+        if (Physics.Raycast(ray, out RaycastHit hit3DPart))
+        {
+            if(hit3DPart.collider.CompareTag("inferiorComplejo") || hit3DPart.collider.CompareTag("inferiorSimple") || 
+                hit3DPart.collider.CompareTag("superiorComplejo") || hit3DPart.collider.CompareTag("superiorSimple"))
+            {
+                partSelected = hit3DPart.transform.gameObject;
                 return true;
             }
         }
