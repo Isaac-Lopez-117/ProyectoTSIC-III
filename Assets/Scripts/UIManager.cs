@@ -6,18 +6,39 @@ using System;
 
 public class UIManager : MonoBehaviour
 {
+    [SerializeField] private GameObject welcomeMenuCanvas;
     [SerializeField] private GameObject mainMenuCanvas;
     [SerializeField] private GameObject itemsMenuCanvas;
     [SerializeField] private GameObject ArPositionCanvas;
     // Start is called before the first frame update
     void Start()
     {
+        GameManager.instance.OnWelcomeMenu += ActivateWelcomeMenu;
         GameManager.instance.OnMainMenu += ActivateMainMenu;
         GameManager.instance.OnItemsMenu += ActivateItemsMenu;
         GameManager.instance.OnARPosition += ActivateARPosition;
     }
 
+    private void ActivateWelcomeMenu(){
+        welcomeMenuCanvas.transform.GetChild(0).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+        welcomeMenuCanvas.transform.GetChild(1).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
+
+        mainMenuCanvas.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        mainMenuCanvas.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        mainMenuCanvas.transform.GetChild(2).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+
+        itemsMenuCanvas.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.5f);
+        itemsMenuCanvas.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        itemsMenuCanvas.transform.GetChild(1).transform.DOMoveY(180, 0.3f);
+
+        ArPositionCanvas.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        ArPositionCanvas.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+    }
+
     private void ActivateMainMenu(){
+        welcomeMenuCanvas.transform.GetChild(0).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+        welcomeMenuCanvas.transform.GetChild(1).transform.DOScale(new Vector3(0, 0, 0), 0.3f);
+
         mainMenuCanvas.transform.GetChild(0).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
         mainMenuCanvas.transform.GetChild(1).transform.DOScale(new Vector3(1, 1, 1), 0.3f);
         mainMenuCanvas.transform.GetChild(2).transform.DOScale(new Vector3(1, 1, 1), 0.3f);

@@ -5,6 +5,7 @@ using System;
 
 public class GameManager : MonoBehaviour
 {
+    public event Action OnWelcomeMenu;
     public event Action OnMainMenu;
     public event Action OnItemsMenu;
     public event Action OnARPosition;
@@ -25,8 +26,13 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        MainMenu();
+        WelcomeMenu();
 
+    }
+
+    public void WelcomeMenu(){
+        OnWelcomeMenu?.Invoke();
+        Debug.Log("Welcome Menu Activated");
     }
 
     public void MainMenu(){

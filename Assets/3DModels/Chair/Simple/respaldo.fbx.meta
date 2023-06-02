@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 0da3b72f9ff21e84abb10cf490ab3371
+guid: 44124506e93f6c043a19435001398b3c
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: textura-madera
-    second: {fileID: 2800000, guid: 0bceb10905bd3e346b3361071e171887, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: f87a9db9d23fbfe4aa586a36601b0304
+guid: 90e71aab3efa4144e8ae8875f1f97357
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fondo-texturizado-textil-tejido-negro
-    second: {fileID: 2800000, guid: 4ff38d3808eb66a489e4de37c54f0293, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

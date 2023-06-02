@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 40072f8b6058abf47b715b414fbe1567
+guid: 3021590b20757d24494c4f3f7fcb61cf
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: fondo-textura-aluminio-rayado
-    second: {fileID: 2800000, guid: a7acf46a05bc2d1438cd188a5cf32c5b, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -8,8 +8,6 @@ using UnityEngine.EventSystems;
 public class ARInteractionsManager : MonoBehaviour
 {
     [SerializeField] private Camera aRCamera;
-    [SerializeField] private float speedRotation = 5.0f;
-    [SerializeField] private float scaleFactor = 0.1f;
 
     private ARRaycastManager aRRaycastManager;
     private List<ARRaycastHit> hits = new List<ARRaycastHit>();
@@ -19,21 +17,12 @@ public class ARInteractionsManager : MonoBehaviour
     private GameObject itemSelected;
     private GameObject partSelected;
 
-    /*private GameObject inferiorComplejo;
-    private GameObject inferiorSimple;
-    private GameObject superiorComplejo;
-    private GameObject superiorSimple;*/
-
     private bool isInitialPosition;
     private bool isOverUI;
     private bool isOver3DModel;
-    private bool isOver3DPart;
-
-    private float rotationTolerance = 1.5f;
-    private float scaleTolerance = 25f;
+    public bool isOver3DPart;
 
     private Vector2 touchPositionDiff;
-    private float touchDis;
 
     public GameObject Item3DModel{
         set{
@@ -76,46 +65,9 @@ public class ARInteractionsManager : MonoBehaviour
                 var touchPosition = touchOne.position;
                 isOverUI = isTapOverUI(touchPosition);
                 isOver3DModel = isTapOver3DModel(touchPosition);
-                isOver3DPart = isTapOver3DPart(touchPosition);                
+                isOver3DPart = isTapOver3DPart(touchPosition); 
+                Debug.Log(isOver3DPart);               
             }
-
-            /*if (touchOne.phase == TouchPhase.Stationary)
-            {
-                if(isOver3DPart)
-                {
-                    string tag = partSelected.tag;
-                    Debug.Log("Estoy dentro");
-                    
-                    inferiorComplejo = GameObject.FindGameObjectWithTag("inferiorComplejo");
-                    inferiorSimple = GameObject.FindGameObjectWithTag("inferiorSimple");
-                    superiorComplejo = GameObject.FindGameObjectWithTag("superiorComplejo");
-                    superiorSimple = GameObject.FindGameObjectWithTag("superiorSimple");
-                    
-                    if (tag == "inferiorComplejo")
-                    {
-                        partSelected.SetActive(false);
-                        inferiorSimple.SetActive(true);
-                    }
-                    else if (tag == "inferiorSimple")
-                    {
-                        partSelected.SetActive(false);
-                        inferiorComplejo.SetActive(true);
-                    }
-                    else if (tag == "superiorComplejo")
-                    {
-                        Debug.Log("estoy en superior");
-
-                        superiorComplejo.SetActive(false);
-                        superiorSimple.SetActive(true);
-                    }
-                    else if (tag == "superiorSimple")
-                    {
-                        partSelected.SetActive(false);
-                        superiorComplejo.SetActive(true);
-                    }
-                    
-                }
-            }*/
 
             if (touchOne.phase == TouchPhase.Moved)
             {
@@ -135,30 +87,13 @@ public class ARInteractionsManager : MonoBehaviour
                 if (touchOne.phase == TouchPhase.Began || touchTwo.phase == TouchPhase.Began)
                 {
                     touchPositionDiff = touchTwo.position - touchOne.position;
-                    touchDis = Vector2.Distance(touchTwo.position, touchOne.position);
                 }
 
                 if (touchOne.phase == TouchPhase.Moved || touchTwo.phase == TouchPhase.Moved)
                 {
                     Vector2 currentTouchPosDiff = touchTwo.position - touchOne.position;
-                    float currentTouchDis = Vector2.Distance(touchTwo.position, touchOne.position);
-
-                    float diffDis = currentTouchDis - touchDis;
-
-                    if (Mathf.Abs(diffDis) > scaleTolerance)
-                    {
-                        Vector3 newScale = item3DModel.transform.localScale + Mathf.Sign(diffDis)*Vector3.one*scaleFactor;
-                        item3DModel.transform.localScale = Vector3.Lerp(item3DModel.transform.localScale, newScale, 0.05f);
-                    }
-
                     float angle = Vector2.SignedAngle(touchPositionDiff, currentTouchPosDiff);
-
-                    if (Mathf.Abs(angle) > rotationTolerance)
-                    {
-                        item3DModel.transform.rotation = Quaternion.Euler(0, item3DModel.transform.rotation.eulerAngles.y - Mathf.Sign(angle)*speedRotation, 0);
-                    }
-                    
-                    touchDis = currentTouchDis;
+                    item3DModel.transform.rotation = Quaternion.Euler(0, item3DModel.transform.rotation.eulerAngles.y - angle, 0);
                     touchPositionDiff = currentTouchPosDiff;
                 }
             }
@@ -194,6 +129,7 @@ public class ARInteractionsManager : MonoBehaviour
             if(hit3DModel.collider.CompareTag("Item"))
             {
                 itemSelected = hit3DModel.transform.gameObject;
+                
                 return true;
             }
         }
@@ -208,6 +144,9 @@ public class ARInteractionsManager : MonoBehaviour
                 hit3DPart.collider.CompareTag("superiorComplejo") || hit3DPart.collider.CompareTag("superiorSimple"))
             {
                 partSelected = hit3DPart.transform.gameObject;
+                Debug.Log("Parte antes: " + partSelected.tag + " Con escala de: " + partSelected.transform.localScale);
+                partSelected.transform.localScale = Vector3.zero;
+                Debug.Log("Parte despues: " + partSelected.tag + " Con escala de: " + partSelected.transform.localScale);
                 return true;
             }
         }
