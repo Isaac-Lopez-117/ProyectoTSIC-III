@@ -572,8 +572,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aRCamera: {fileID: 1620374257}
-  speedRotation: 5
-  scaleFactor: 0.1
   isOver3DPart: 0
 --- !u!4 &376320223
 Transform:
@@ -626,7 +624,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -26999334, y: 21744714}
+  m_AnchoredPosition: {x: -27930386, y: 22474300}
   m_SizeDelta: {x: 0, y: 440}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &464612833
